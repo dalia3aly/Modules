@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="/">Home</a>
+      </nav>
+    </header>
+    <main>
+      <form action="http://localhost:3000/profile" method="post">
+        <div style="padding: 20px;">
+          <input name="First Name" placeholder="First Name" type="text">
+          <input name="Last Name" placeholder="Last Name" type="text">
+        </div>
+        
+        <div style="padding: 20px;">
+          <input name="age" placeholder="Your age" type="number">
+        </div>
+
+        <div>
+          <input type="radio" name="gender" value="male"> Male
+          <input type="radio" name="gender" value="female"> Female
+          <input type="radio" name="gender" value="NB"> Non Binary/Prefer Not To Say
+        </div>
+        
+        <div style="padding: 20px;">
+          <select name="personality_type">
+            <option value="extrovert">Extrovert</option>
+            <option value="ambivert">Ambivert</option>
+            <option value="introvert">Introvert</option>
+          </select>
+        </div>
+
+        <div style="padding: 20px;">
+          <input name="email" placeholder="Email address" type="email">
+        </div>
+        <div style="padding: 20px;">
+        <input type="tel" name="phone_number" placeholder="Phone number(optional)"> 
+        </div>
+
+        <input type="submit" value="Submit">
+        
+      </form>
+      <div>
+      <input type="checkbox"> Agree to our terms & conditions
+      <input type="checkbox"> Subscribe to our mailing list
+      </div>
+    </main>
+    <footer style="margin-top: 100px;">Copyright 2021 &copy;</footer>
+  </body>
+</html>
