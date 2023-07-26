@@ -10,7 +10,7 @@
   body {
     width: 1200px;
     max-width: max-content;
-    margin: 50px auto;
+    margin: 5% auto;
     background-color: whitesmoke;
     
   }
@@ -40,6 +40,11 @@
     text-align: center;
     text-size-adjust: auto;
     flex: 1;
+    background-image: url("skyline.png");
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     
   }
 
@@ -75,7 +80,9 @@
 
   .section-6 {
     background-color: #B7B7A4;
-    padding: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
     flex: 2;  
   }
 
@@ -98,3 +105,42 @@
  .name {
   padding: 10px;
  }
+
+ /*Responsive design adjustments for small screens*/
+
+ @media screen and (max-width: 425px) {
+  body {
+    font-size: 12px;
+    margin-right: 5%;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: fit-content;
+  }
+  ul {
+    font-size: 12px;
+    word-wrap: break-word;
+  }
+
+  .container {
+    width: 60%;
+  }
+}
+
+ /*Responsive design adjustments for medium screens*/
+
+ @media screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 14px;
+    margin-right: 5%;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: fit-content;
+  }
+
+  .container {
+    width: 80%;
+    word-wrap: break-word;
+  }
+}
