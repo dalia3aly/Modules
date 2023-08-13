@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Slider</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #022da5;
+            animation: slideAndColor 5s infinite alternate;
+            animation-direction: reverse;
+        }
+
+        @keyframes slideAndColor {
+            0% {
+                margin-top: 10px;
+                background-color: #022da5;
+            }
+            50% {
+                margin-top: calc(100vh - 100px);
+                background-color: #c51400;
+            }
+            100% {
+                margin-top: 10px;
+                background-color: #022da5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+    </div>
+</body>
+</html>

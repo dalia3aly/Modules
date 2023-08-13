@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Item Count</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+</head>
+<body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="main" style="width: 900px;height:600px;"></div>
+    <script type="text/javascript">
+        
+        // fetching fake store API data
+
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(json => {
+                const categories = {};
+                json.forEach(item => {
+                    if (categories[item.category]) {
+                        categories[item.category]++;
+                    } else {
+                        categories[item.category] = 1;
+                    }
+                });
+
+                const categoryNames = Object.keys(categories);
+                const itemCounts = Object.values(categories);
+
+                // Initialize the echarts instance based on the prepared dom
+
+                const myChart = echarts.init(document.getElementById('main'));
+
+                // Specify the configuration items and data for the chart
+
+                const option = {
+                    title: {
+                        text: 'Number of Items by Category'
+                    },
+                    xAxis: {
+                        data: categoryNames
+                    },
+                    yAxis: {},
+                    series: [{
+                        name: 'Item Count',
+                        type: 'bar',
+                        data: itemCounts
+                    }]
+                };
+
+                // Display the chart
+                myChart.setOption(option);
+            });
+    </script>
+</body>
+</html>

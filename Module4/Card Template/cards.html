@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+               
+        body {
+            font-family: 'Century Gothic', Helvetica, sans-serif;
+            background-color: #ffffff;
+        }
+
+        #card-list {
+            display: flex;
+            flex-wrap: wrap; 
+        }
+
+        .card {
+            flex: 0 0 25%; 
+            padding: 10px;
+            border: 2px solid grey;
+            border-radius: 10px;
+            background-color: white;
+            margin: 1em;
+            align-items: center;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 3em;
+            padding: 0 0 10px 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .card-description {
+            font-weight: 400;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #556a79 !important;
+            height: 80px !important;
+            margin-bottom: 50px !important;
+        }
+
+    </style>
+</head>
+
+<body>
+    <template id="card-template">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title"></h2>
+                    <p class="card-description"></p>
+                    
+                    <img class="card-image" src="" alt="">
+                    
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">The Gallery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            </div>
+        </div>
+    </nav>
+
+    <div id="card-list" class="container">
+        <div class="row"></div>
+    </div>
+
+    <script>
+        const artists = [
+            { title: 'Raffaello Sanzio', description: 'Italian High Renaissance', image: 'Rafaello.jpg' },
+            { title: 'Pablo Picasso', description: 'Modernism', image: 'Picasso.jpg'},
+            { title: 'Fransisco Goya', description: 'Romanticism', image: 'Goya.jpg'},
+            { title: 'Salvador Dali', description: 'Surrealism', image: 'Dali.JPG'}
+        ]
+
+        function addCard(artist) {
+            const template = document.getElementById("card-template").content.cloneNode(true);
+
+            template.querySelector('.card-title').innerText = artist.title;
+            template.querySelector('.card-description').innerText = artist.description;
+            template.querySelector('.card-image').src = artist.image;
+
+            document.querySelector('#card-list .row').appendChild(template);
+        }
+
+        if ('content' in document.createElement('template')) {
+            artists.forEach(artist => addCard(artist));
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

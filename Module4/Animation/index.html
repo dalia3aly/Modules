@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('background.jpg');
+            background-size: contain;
+            background-position:  top;  
+            background-repeat: no-repeat; 
+        } 
+
+        h3 {
+            border: 1px dashed black;
+            border-radius: 5px;
+            padding: 5px;
+            display: inline-block;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.8); 
+        }
+
+        .cat-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: catMove 15s linear infinite;
+            animation-delay: 0s;
+        }
+
+        .cat-container img {
+            width: 25%; 
+        }
+
+        @keyframes catMove {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(90%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cat-container">
+        <h3>This neighbourhood is boring...
+            <br> I'm going for a walk!</h3>
+            <br>
+        <img src="walkingCat.gif" alt="Walking Cat">
+    </div>
+
+</body>
+</html>

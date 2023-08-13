@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment.js DateTime Formatting</title>
+    <style>
+        .box { border: 1px solid #616161; 
+        padding: 2em; 
+        margin: 2em; 
+        background: rgba(255,255,255,0.5); 
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.36/moment-timezone.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <h2>Part 1: Days Between Dates</h2>
+        <div id="task1"></div>
+    </div>
+
+    <div class="box">
+        <h2>Part 2: Compare Dates</h2>
+        <div id="task2"></div>
+    </div>
+
+    <div class="box">
+        <h2>Part 3: Current Time in London</h2>
+        <div id="task3"></div>
+    </div>
+
+    <script type="text/javascript">
+        // Part 1: Birthdate and the number of days till today
+
+        const birthdate = moment('1988-09-09');
+        const currentDate = moment();
+        const daysDiff = currentDate.diff(birthdate, 'days');
+        document.getElementById('task1').innerHTML = `Days count between birthdate and current date is: ${daysDiff}`;
+
+        // Part 2: Compare two dates and display before/after
+        const date2017 = moment('2017-08-15');
+        const date2020 = moment('2020-11-20');
+        const beforeOrAfter = date2017.isBefore(date2020) ? 'before' : 'after';
+        document.getElementById('task2').innerHTML = `The First date is ${beforeOrAfter} the second date`;
+
+        // current time in London (it didn't work with moment.js library, so I used moment-timezone library)
+
+        const londonTime = moment().tz('Europe/London');
+        document.getElementById('task3').innerHTML = `Current Time in London: ${londonTime.format('YYYY-MM-DD HH:mm:ss')}`;
+    </script>
+</body>
+</html>

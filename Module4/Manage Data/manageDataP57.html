@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .card {
+        display: flexbox;
+        flex-direction: row;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 20px;
+        background-color: #fff;
+        flex-wrap: wrap;
+        max-width: 25%;
+    }
+
+    input, textarea {
+      margin: 10px;
+      border: 1px solid #ccc;
+      align-self: left;
+    }
+
+    #newsContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      background-color: #eeeeee;
+    }
+  </style>
+  <title>News Page</title>
+</head>
+<body>
+
+    <div id="newsContainer"></div>
+
+    <div id="newsForm">
+      <label for="newsHeadline">Headline: </label>
+      <input type="text" id="newsHeadline" placeholder="Enter news headline">
+      <br>
+      <label for="newsContent">Content : </label>
+      <input type="text" id="newsContent" placeholder="Enter news content">  
+      <button onclick="addNews()">Add News</button>
+    </div>
+  
+  
+  
+  
+
+  <script>
+    let news = [
+      { id: 1, headline: 'Weather Tomorrow', content: 'Temprature drops to 10 degrees' },
+      { id: 2, headline: 'NSW Transport', content: 'Delays in T3 & T8 trains due to ongoing work' },
+      { id: 3, headline: 'World Cup News', content: 'Spain scores 2 goals in quarter final stage and qualifies to the semi-finals' }
+    ];
+
+    const newsContainer = document.getElementById('newsContainer');
+    const newsHeadlineInput = document.getElementById('newsHeadline');
+    const newsContentInput = document.getElementById('newsContent');
+
+    function displayNews() {
+      newsContainer.innerHTML = '';
+      news.forEach(item => {
+        const newsCard = document.createElement('div');
+        newsCard.classList.add('card');
+        newsCard.innerHTML = `<h3>${item.headline}</h3> <p>${item.content}</p>`;
+        newsContainer.appendChild(newsCard);
+      });
+    }
+
+    function addNews() {
+      const headline = newsHeadlineInput.value;
+      const content = newsContentInput.value;
+
+      if (headline && content) {
+        const newNewsItem = {
+          id: news.length + 1,
+          headline: headline,
+          content: content
+        };
+
+        news.push(newNewsItem);
+        displayNews();
+
+        newsHeadlineInput.value = '';
+        newsContentInput.value = '';
+      }
+    }
+
+    displayNews();
+
+  </script>
+</body>
+</html>

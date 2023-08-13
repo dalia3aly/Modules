@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<template id="post">
+    <div class="post">
+        <h3></h3>
+        <p></p>
+    </div>
+</template>
+
+<head>
+    <title>fetch Data</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    
+        .post {
+            border: 1px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+    
+        #post-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1>Free Hosted fake API</h1>
+    <div id="post-list"></div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const addCard = card => {
+        const template = document.getElementById("post").content.cloneNode(true);
+        template.querySelector('h3').innerText = card.title;
+        template.querySelector('p').innerText = card.body;
+        document.querySelector('#post-list').appendChild(template);
+    };
+
+    const fetchPosts = url => {
+        fetch(url)
+            .then(response => response.json())
+            .then(json => json.forEach(addCard));
+    };
+
+
+    window.addEventListener('load', () => {
+        fetchPosts('https://jsonplaceholder.typicode.com/posts?_limit=10');
+        createPost();
+    });
+</script>
+
+</html>
